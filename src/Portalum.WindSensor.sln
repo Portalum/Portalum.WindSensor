@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33717.318
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Portalum.WindSensor.TestConsole", "Portalum.WindSensor.TestConsole\Portalum.WindSensor.TestConsole.csproj", "{3CE06905-47FB-415B-B505-EFB0065FB341}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Portalum.WindSensor", "Portalum.WindSensor\Portalum.WindSensor.csproj", "{2744821A-2F04-4686-A05E-24CC7099A4D6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Portalum.WindSensor.UnitTest", "Portalum.WindSensor.UnitTest\Portalum.WindSensor.UnitTest.csproj", "{07B8B887-B96B-421F-BFE7-5CD40B95DE90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portalum.WindSensor.Webserver", "Portalum.WindSensor.Webserver\Portalum.WindSensor.Webserver.csproj", "{7003F3B7-18E5-4DE0-BE12-53811E971211}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3CE06905-47FB-415B-B505-EFB0065FB341}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CE06905-47FB-415B-B505-EFB0065FB341}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CE06905-47FB-415B-B505-EFB0065FB341}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CE06905-47FB-415B-B505-EFB0065FB341}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2744821A-2F04-4686-A05E-24CC7099A4D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2744821A-2F04-4686-A05E-24CC7099A4D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2744821A-2F04-4686-A05E-24CC7099A4D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2744821A-2F04-4686-A05E-24CC7099A4D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07B8B887-B96B-421F-BFE7-5CD40B95DE90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07B8B887-B96B-421F-BFE7-5CD40B95DE90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07B8B887-B96B-421F-BFE7-5CD40B95DE90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07B8B887-B96B-421F-BFE7-5CD40B95DE90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7003F3B7-18E5-4DE0-BE12-53811E971211}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7003F3B7-18E5-4DE0-BE12-53811E971211}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7003F3B7-18E5-4DE0-BE12-53811E971211}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7003F3B7-18E5-4DE0-BE12-53811E971211}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D1BA758F-58CD-40BB-998E-AD3727903F60}
+	EndGlobalSection
+EndGlobal

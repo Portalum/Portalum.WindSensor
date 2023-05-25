@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Nager.TcpClient" Version="1.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Portalum.WindSensor\Portalum.WindSensor.csproj" />
   </ItemGroup>
 

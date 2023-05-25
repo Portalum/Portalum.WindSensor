@@ -9,18 +9,19 @@ namespace Portalum.WindSensor.Webserver.Services
         private readonly CancellationTokenSource _cancellationTokenSource;
         private GillWindSensorParseResult _lastResult;
 
-        public WindSensorService(GillWindSensorParser gillWindSensorParser)
+        public WindSensorService(
+            IConfiguration configuration,
+            TcpClient tcpClient,
+            GillWindSensorParser gillWindSensorParser)
         {
-            //TODO: Add logic read config from appsettings
-
-            var rs485EthernetConverterIpAddress = "10.14.20.19";
-            var rs485EthernetConverterPort = 8005;
-
+            this._tcpClient = tcpClient;
             this._gillWindSensorParser = gillWindSensorParser;
-
             this._cancellationTokenSource = new CancellationTokenSource();
-            this._tcpClient = new TcpClient();
+
             this._tcpClient.DataReceived += this.OnDataReceived;
+
+            var rs485EthernetConverterIpAddress = configuration.GetValue<string>("WindSensor:Rs485Module:IpAddress");
+            var rs485EthernetConverterPort = configuration.GetValue<int>("WindSensor:Rs485Module:Port");
 
             _ = Task.Run(async () => await this._tcpClient.ConnectAsync(
                 rs485EthernetConverterIpAddress,
@@ -58,7 +59,11 @@ namespace Portalum.WindSensor.Webserver.Services
                 return;
             }
 
-            this._lastResult = this._gillWindSensorParser?.Parse(receivedData);
+            var result = this._gillWindSensorParser?.Parse(receivedData);
+            if (result != null)
+            {
+                this._lastResult = result;
+            }
         }
     }
 }

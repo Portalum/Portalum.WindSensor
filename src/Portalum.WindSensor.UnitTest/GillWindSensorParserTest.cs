@@ -1,3 +1,5 @@
+using Portalum.WindSensor.Helpers;
+
 namespace Portalum.WindSensor.UnitTest
 {
     [TestClass]

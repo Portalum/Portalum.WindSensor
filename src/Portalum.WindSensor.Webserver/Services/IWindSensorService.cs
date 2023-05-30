@@ -2,6 +2,6 @@
 {
     public interface IWindSensorService
     {
-        GillWindSensorParseResult GetLastValue();
+        GillWindSensorParseResult? GetLastValue();
     }
 }

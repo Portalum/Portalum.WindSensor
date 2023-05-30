@@ -7,7 +7,10 @@ namespace Portalum.WindSensor.Webserver.Services
         private readonly GillWindSensorParser _gillWindSensorParser;
         private readonly TcpClient _tcpClient;
         private readonly CancellationTokenSource _cancellationTokenSource;
+        private readonly int _noDataTimeoutInSeconds = 30;
         private GillWindSensorParseResult _lastResult;
+        private DateTime? _lastResultAt;
+        
 
         public WindSensorService(
             IConfiguration configuration,
@@ -47,8 +50,18 @@ namespace Portalum.WindSensor.Webserver.Services
             }
         }
 
-        public GillWindSensorParseResult GetLastValue()
+        public GillWindSensorParseResult? GetLastValue()
         {
+            if (!this._lastResultAt.HasValue)
+            {
+                return null;
+            }
+
+            if (DateTime.Now.Subtract(this._lastResultAt.Value).TotalSeconds > this._noDataTimeoutInSeconds)
+            {
+                return null;
+            }
+
             return this._lastResult;
         }
 
@@ -63,6 +76,7 @@ namespace Portalum.WindSensor.Webserver.Services
             if (result != null)
             {
                 this._lastResult = result;
+                this._lastResultAt = DateTime.Now;
             }
         }
     }

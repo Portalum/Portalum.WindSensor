@@ -21,7 +21,6 @@ app.Services.GetService<IWindSensorService>();
 
 // Configure the HTTP request pipeline.
 
-//app.MapGet("/", () => "<html><body>Hello World!</body></html>");
 app.MapGet("/", async (HttpContext context) =>
 {
     //sets the content type as html

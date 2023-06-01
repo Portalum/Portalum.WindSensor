@@ -5,3 +5,5 @@ Gill Instruments WindSonic Sensor
 
 
 
+## Install WindSensor as a service
+`sc.exe create WindService binpath=C:\Portalum\Portalum.WindSensor.Webserver.exe`

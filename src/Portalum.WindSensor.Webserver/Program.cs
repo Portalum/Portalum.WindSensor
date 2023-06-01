@@ -5,6 +5,11 @@ using Portalum.WindSensor.Webserver.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddWindowsService(configure =>
+{
+    configure.ServiceName = "Portalum.WindSensor";
+});
+
 // Add services to the container.
 builder.Services.AddSingleton<TcpClient>();
 builder.Services.AddSingleton<GillWindSensorParser>();
@@ -15,6 +20,14 @@ var app = builder.Build();
 app.Services.GetService<IWindSensorService>();
 
 // Configure the HTTP request pipeline.
+
+//app.MapGet("/", () => "<html><body>Hello World!</body></html>");
+app.MapGet("/", async (HttpContext context) =>
+{
+    //sets the content type as html
+    context.Response.Headers.ContentType = new Microsoft.Extensions.Primitives.StringValues("text/html; charset=UTF-8");
+    await context.Response.SendFileAsync("wwwroot/index.html");
+});
 
 app.MapGet("/cgi-bin/CGI_GetMeasurement.cgi", (HttpRequest request, IWindSensorService windSensorService) => 
 {
@@ -59,6 +72,18 @@ app.MapGet("/cgi-bin/CGI_GetMeasurement.cgi", (HttpRequest request, IWindSensorS
         }
     });
 
+});
+
+app.MapGet("/data", (IWindSensorService windSensorService) =>
+{
+    var lastValue = windSensorService.GetLastValue();
+    if (lastValue == null)
+    {
+        return Results.Json(lastValue);
+    }
+
+    return Results.StatusCode(StatusCodes.Status204NoContent);
+    
 });
 
 app.Run("http://localhost:8023");
